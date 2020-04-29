@@ -1,6 +1,5 @@
 const firebase = require('firebase');
 const fs = require('fs');
-const jsdiff = require('diff');
 
 const firebaseConfig = {
   apiKey: "AIzaSyC8woTZJM1TUhI-DS--oZQzE2fNBm6h-cQ",
