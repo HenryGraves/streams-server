@@ -47,7 +47,7 @@ fs.watch("./", (eventType, filename) => {
     data = fs.readFileSync('db.json');
     streamUpdate = JSON.parse(data);
     s = streamUpdate.streams;
-    firebase.database().ref('streams/').set(s);
+    firebase.database().ref("streams").set(s);
 
 
     // console output
@@ -74,9 +74,12 @@ fs.watch("./", (eventType, filename) => {
   }, 100);
 })
 
-let streams = firebase.database().ref('streams/');
-
-streams.on('child_changed', (snapshot) => {
-  console.log("fired");
-  console.log(snapshot.val());
-})
+setInterval(() => {
+  let streams = firebase.database().ref("/");
+  streams.on("value", (snapshot) => {
+    console.log("write");
+    let values = JSON.stringify(snapshot.val());
+    let db = fs.writeFileSync("db.json", values);
+    // console.log(JSON.stringify(snapshot.val()));
+  })
+}, 1000);
