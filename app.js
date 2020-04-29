@@ -37,7 +37,7 @@ let data = fs.readFileSync('db.json');
 let streamUpdate = JSON.parse(data);
 let s = streamUpdate.streams;
 
-fs.watch("db.json", (eventType, filename) => {
+fs.watch("./", (eventType, filename) => {
   if(!watching) {
     watching = true;
     return;
