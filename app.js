@@ -31,7 +31,6 @@ function write(title, description, userId, id) {
 }
 
 let _streams = [];
-let _streamIds = [];
 var watching = false;
 
 let data = fs.readFileSync('db.json');
@@ -56,7 +55,6 @@ fs.watch("db.json", (eventType, filename) => {
     console.log(`filename provided: ${filename}`);
     console.log("Adding stream");
     _streams.push(s[s.length - 1]);
-    _streamIds.push(s[s.length - 1].id);
     console.log("Streams: ");
     for (i in _streams) {
       console.log(_streams[i]);
